@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact &mdash; The Rama Creations</title>
+  <meta name="description" content="Get in touch with The Rama Creations for questions, bulk orders, or partnership ideas." />
+  <link rel="icon" href="assets/logo-icon-small.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <link rel="canonical" href="https://theramacreations.com/contact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Rama Creations" />
+  <meta property="og:title" content="Contact — The Rama Creations" />
+  <meta property="og:description" content="Get in touch with The Rama Creations for questions, bulk orders, or partnership ideas." />
+  <meta property="og:url" content="https://theramacreations.com/contact.html" />
+  <meta property="og:image" content="https://theramacreations.com/assets/covers/habits/01-front.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — The Rama Creations" />
+  <meta name="twitter:description" content="Get in touch with The Rama Creations for questions, bulk orders, or partnership ideas." />
+  <meta name="twitter:image" content="https://theramacreations.com/assets/covers/habits/01-front.jpg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact — The Rama Creations",
+    "url": "https://theramacreations.com/contact.html"
+  }
+  </script>
+</head>
+<body data-theme="contact">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-icon-small.svg" alt="" />
+        <span>The Rama <span class="accent">Creations</span></span>
+      </a>
+      <nav>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="books.html">Books</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding-bottom: 24px;">
+      <div class="container">
+        <span class="confetti" style="top: 2%; left: 4%;">&#128233;</span>
+        <span class="confetti" style="top: 2%; right: 4%;">&#127775;</span>
+        <span class="eyebrow">Say Hello</span>
+        <h1>Let's talk about your <span class="accent">next book</span></h1>
+        <p class="lead">Questions, bulk orders, custom collections, or partnership ideas &mdash; send a note and we'll get back to you.</p>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="container">
+        <!--
+          GitHub Pages serves static files only -- there's no server here.
+          This form submits to a Google Apps Script Web App bound to a
+          Google Sheet, which appends each message as a new row -- see
+          js/contact.js for the endpoint URL (CONFIG.endpoint) and
+          rama-creations-site/README.md for the exact Apps Script setup steps.
+          Every field is also verified in the browser before it's ever sent:
+          non-empty name, a real-looking email, and a message with real
+          content -- see js/contact.js `validate()`.
+        -->
+        <form class="form-card" id="contact-form" novalidate>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required minlength="2" maxlength="120" autocomplete="name" />
+          <p class="field-error" data-error-for="name"></p>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required maxlength="200" autocomplete="email" />
+          <p class="field-error" data-error-for="email"></p>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required minlength="10" maxlength="4000"></textarea>
+          <p class="field-error" data-error-for="message"></p>
+
+          <!-- Honeypot: real visitors never see or fill this in; bots filling every field usually do. -->
+          <div style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" aria-hidden="true">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send message</button>
+          </div>
+          <p class="form-note" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-copy">&copy; <span id="year"></span> The Rama Creations. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/theme-picker.js"></script>
+  <script src="js/confetti-extra.js"></script>
+  <script src="js/emoji-launcher.js"></script>
+  <script src="js/contact.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About &mdash; The Rama Creations</title>
+  <meta name="description" content="The Rama Creations is a small coloring and story book studio focused on screen-free, print-ready books for curious minds." />
+  <link rel="icon" href="assets/logo-icon-small.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <link rel="canonical" href="https://theramacreations.com/about.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Rama Creations" />
+  <meta property="og:title" content="About — The Rama Creations" />
+  <meta property="og:description" content="The Rama Creations is a small coloring and story book studio focused on screen-free, print-ready books for curious minds." />
+  <meta property="og:url" content="https://theramacreations.com/about.html" />
+  <meta property="og:image" content="https://theramacreations.com/assets/covers/habits/01-front.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — The Rama Creations" />
+  <meta name="twitter:description" content="The Rama Creations is a small coloring and story book studio focused on screen-free, print-ready books for curious minds." />
+  <meta name="twitter:image" content="https://theramacreations.com/assets/covers/habits/01-front.jpg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About — The Rama Creations",
+    "url": "https://theramacreations.com/about.html"
+  }
+  </script>
+</head>
+<body data-theme="about">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-icon-small.svg" alt="" />
+        <span>The Rama <span class="accent">Creations</span></span>
+      </a>
+      <nav>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="books.html">Books</a>
+          <a href="about.html" aria-current="page">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding-bottom: 24px;">
+      <div class="container">
+        <span class="confetti" style="top: 2%; left: 4%;">&#128171;</span>
+        <span class="confetti" style="top: 2%; right: 4%;">&#127801;</span>
+        <span class="eyebrow">Our Story</span>
+        <h1>A small studio making <span class="accent">screen-free</span> time feel special</h1>
+        <p class="lead">
+          The Rama Creations started with a simple idea: coloring books should
+          be more than blank outlines. Every collection pairs bold, print-safe
+          artwork with short stories and reflections, so a coloring session
+          becomes a moment of connection, not just a distraction.
+        </p>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Everyone's Perspective</span>
+          <h2>Made for every point of view</h2>
+          <p>Tap a slice of the chart (or a label) to see how each audience experiences our books.</p>
+        </div>
+        <div class="audience-donut-wrap">
+          <div id="audience-donut" class="audience-donut" role="group" aria-label="Audience perspectives chart"></div>
+          <ul id="audience-legend" class="donut-legend"></ul>
+          <div id="donut-popup" class="donut-popup" hidden>
+            <button type="button" class="donut-popup-close" id="donut-popup-close" aria-label="Close">&times;</button>
+            <h3 id="donut-popup-title"></h3>
+            <p id="donut-popup-message"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="container">
+        <div class="card" style="text-align: center;">
+          <h3>Want to know more?</h3>
+          <p>We're happy to talk about custom collections, bulk orders, or partnership ideas.</p>
+          <div style="margin-top: 18px;">
+            <a class="btn btn-primary" href="contact.html">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-copy">&copy; <span id="year"></span> The Rama Creations. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/theme-picker.js"></script>
+  <script src="js/confetti-extra.js"></script>
+  <script src="js/emoji-launcher.js"></script>
+  <script src="js/audience-donut.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

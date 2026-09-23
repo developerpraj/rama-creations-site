@@ -1,0 +1,49 @@
+<svg width="520" height="220" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="40" y1="30" x2="480" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1020"/>
+      <stop offset="0.5" stop-color="#121A2F"/>
+      <stop offset="1" stop-color="#0A0F1B"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="90" y1="40" x2="430" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7D67A"/>
+      <stop offset="0.5" stop-color="#F8B84E"/>
+      <stop offset="1" stop-color="#E38F2D"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="120" y1="50" x2="400" y2="170" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A78BFA"/>
+      <stop offset="1" stop-color="#6D5EF6"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="10" y="10" width="500" height="200" rx="28" fill="url(#bg)"/>
+
+  <circle cx="160" cy="104" r="62" fill="url(#violet)" opacity="0.18"/>
+  <circle cx="160" cy="104" r="40" stroke="url(#gold)" stroke-width="2.5" opacity="0.85"/>
+  <circle cx="160" cy="104" r="6" fill="#F7D67A"/>
+
+  <g stroke="url(#gold)" stroke-width="3" stroke-linecap="round">
+    <path d="M160 48L160 72"/>
+    <path d="M160 136L160 160"/>
+    <path d="M104 104L128 104"/>
+    <path d="M192 104L216 104"/>
+    <path d="M120 68L136 84"/>
+    <path d="M184 124L200 140"/>
+    <path d="M120 140L136 124"/>
+    <path d="M184 84L200 68"/>
+  </g>
+
+  <g fill="url(#gold)">
+    <circle cx="94" cy="72" r="4"/>
+    <circle cx="225" cy="68" r="4"/>
+    <circle cx="232" cy="150" r="4"/>
+    <circle cx="90" cy="145" r="4"/>
+  </g>
+
+  <g>
+    <text x="270" y="108" fill="#F8F6F2" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="1.1">THE RAMA CREATIONS</text>
+    <text x="271" y="138" fill="#D9C7FF" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="4">COLORING BOOK STUDIO</text>
+  </g>
+
+  <path d="M298 62C329 58 349 61 367 76C387 92 394 119 385 141C376 164 351 176 324 175C297 174 273 159 261 136C250 115 253 90 268 76C279 65 289 62 298 62Z" stroke="url(#gold)" stroke-opacity="0.7" stroke-width="2.2" fill="none"/>
+</svg>

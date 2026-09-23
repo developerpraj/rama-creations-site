@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Books &mdash; The Rama Creations</title>
+  <meta name="description" content="Browse The Rama Creations' coloring and story book collections: constellations, festivals, daily habits, investments, and connection." />
+  <link rel="icon" href="assets/logo-icon-small.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <link rel="canonical" href="https://theramacreations.com/books.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Rama Creations" />
+  <meta property="og:title" content="Books — The Rama Creations" />
+  <meta property="og:description" content="Browse The Rama Creations' coloring and story book collections: constellations, festivals, daily habits, investments, and connection." />
+  <meta property="og:url" content="https://theramacreations.com/books.html" />
+  <meta property="og:image" content="https://theramacreations.com/assets/covers/habits/01-front.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Books — The Rama Creations" />
+  <meta name="twitter:description" content="Browse The Rama Creations' coloring and story book collections: constellations, festivals, daily habits, investments, and connection." />
+  <meta name="twitter:image" content="https://theramacreations.com/assets/covers/habits/01-front.jpg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Books — The Rama Creations",
+    "url": "https://theramacreations.com/books.html"
+  }
+  </script>
+  <!-- A second, per-book ItemList schema is injected dynamically by js/books.js
+       once data/books.json loads, so it always matches the real catalog. -->
+</head>
+<body data-theme="books">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-icon-small.svg" alt="" />
+        <span>The Rama <span class="accent">Creations</span></span>
+      </a>
+      <nav>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="books.html" aria-current="page">Books</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding-bottom: 24px;">
+      <div class="container">
+        <span class="confetti" style="top: 2%; left: 4%;">&#127808;</span>
+        <span class="confetti" style="top: 2%; right: 4%;">&#127775;</span>
+        <span class="eyebrow">The Catalog</span>
+        <h1>Books for <span class="accent">every curious mind</span></h1>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="container">
+        <!--
+          This catalog is fully data-driven from data/books.json -- js/books.js
+          fetches it and builds every card below at load time. Nothing in
+          this file needs editing to add, remove, or change a book.
+
+          data/books.json is GENERATED, not hand-written -- it's built by
+          tools/generate_catalog.py from rama-creations-site/content/books/
+          folders (one folder per book: book.json + an optional images/
+          subfolder). That script also runs automatically in
+          .github/workflows/deploy-site.yml before every GitHub Pages
+          deploy. Developer workflow to add a new book: drop a folder in
+          content/books/, commit, push -- see README.md for the exact
+          book.json format and image naming convention.
+        -->
+        <div class="catalog-toolbar">
+          <input type="search" id="book-search" placeholder="Search by title or description..." aria-label="Search books" />
+          <select id="book-filter" aria-label="Filter by age group">
+            <option value="all">All ages</option>
+          </select>
+          <select id="book-sort" aria-label="Sort books">
+            <option value="default">Featured order</option>
+            <option value="title-asc">Title A&ndash;Z</option>
+            <option value="title-desc">Title Z&ndash;A</option>
+          </select>
+        </div>
+
+        <p class="no-results" id="no-results" hidden>No books match your search or filter.</p>
+        <p class="no-results" id="load-error" hidden>Couldn't load the book catalog (data/books.json) -- check the console for details.</p>
+
+        <div class="grid grid-3" id="book-grid"></div>
+
+        <dialog id="book-modal" class="book-modal">
+          <button class="modal-close" id="book-modal-close" aria-label="Close quick view" type="button">&times;</button>
+          <div id="book-modal-content"></div>
+        </dialog>
+
+        <dialog id="image-lightbox" class="image-lightbox">
+          <div class="lightbox-toolbar">
+            <button class="modal-icon-btn" id="lightbox-fullscreen" aria-label="Toggle full screen" title="Toggle full screen" type="button">&#x26F6;</button>
+            <button class="modal-icon-btn" id="lightbox-close" aria-label="Close full-size view" title="Close" type="button">&times;</button>
+          </div>
+          <div id="lightbox-content"></div>
+        </dialog>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-copy">&copy; <span id="year"></span> The Rama Creations. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/theme-picker.js"></script>
+  <script src="js/confetti-extra.js"></script>
+  <script src="js/emoji-launcher.js"></script>
+  <script src="js/books.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
