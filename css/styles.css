@@ -1239,7 +1239,7 @@ textarea {
 /* Suppress the browser's default focus box on click/tap -- our own
    stroke-width change above (and the legend highlight) already show what's
    selected, and the UA default can paint as a stray black/yellow square
-   (especially under Windows high-contrast / forced-colors mode). */
+   in forced-colors mode. */
 .donut-segment {
   outline: none;
   forced-color-adjust: none;
