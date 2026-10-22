@@ -1,37 +1,9 @@
 [
   {
-    "id": "connection",
-    "title": "The Magic of Connection",
-    "ageLabel": "All Ages none",
-    "ageFilter": "all-ages-none",
-    "shortDescription": "Bringing the Temperance Woods Together — teaching cognition and connection through gentle, reflective coloring pages.",
-    "fullDescription": "Bringing the Temperance Woods Together -- teaching cognition and connection through gentle, reflective coloring pages. Follow a small cast of forest characters as they navigate misunderstandings, practice listening, and find their way back to each other, one page at a time -- a quiet, screen-free way to talk about feelings, friendship, and what it really means to reconnect.",
-    "themeColor": null,
-    "buyLink": null,
-    "images": [
-      {
-        "src": "assets/covers/connection/01-front.jpg",
-        "alt": "Front"
-      },
-      {
-        "src": "assets/covers/connection/02-back.jpg",
-        "alt": "Back"
-      },
-      {
-        "src": "assets/covers/connection/03-instagram.jpg",
-        "alt": "Instagram"
-      },
-      {
-        "src": "assets/covers/connection/04-pinterest.jpg",
-        "alt": "Pinterest"
-      }
-    ]
-  },
-  {
     "id": "constellations",
-    "title": "The 27 Constellations (KDP Migration)",
-    "ageLabel": "Ages 7 to 15",
-    "ageFilter": "ages-7-to-15",
+    "title": "The Magic Constellations",
+    "ageLabel": "Ages 7 +",
+    "ageFilter": "ages-7",
     "shortDescription": "Journey through the stars together with 30 nights of ancient cosmic tales, mindful coloring, and bedtime wonder.",
     "fullDescription": "Blast off on a magical 30-day journey through the stars!\n\nIntroduce your child and yourself to the wonders of the night sky and ancient cosmic wisdom with *The Magic Constellations*. Designed specifically for curious minds, this unique coloring and storybook combines gentle bedtime storytelling with mindfulness, creative coloring, and deep educational keys for parents.\n\nInside this stellar adventure, your child will:\n• Color 27 Unique Constellation Artworks: High-contrast, beautifully illustrated pages featuring bold, clean lines tailored for safe and fun coloring.\n• Explore the 27 Constellations/Nakshatras: Journey through the lunar mansions of Vedic astronomy, discovering the unique shapes, fun facts, and stories behind every star.\n• Uncover Ancient Vedic Myths: Every single day features short, enchanting mythological tales that teach timeless values like courage, patience, and kindness.\n• Unlock \"The Constellation Key\": A special educational box on every spread provides parents with fun facts, astronomical names, and deep philosophical meanings to read aloud.\n\nMore Than Just a Coloring Book\nThis is quality time you will treasure—reading soothing stories side-by-side, exploring the mysteries of the universe, and building mindful bedtime habits together. Whether you are looking for a unique educational gift, a thoughtful introduction to astronomy, or a calming wind-down routine, this book turns every night into a cosmic adventure.\n\nGrab your crayons, look up at the stars, and let your imagination soar!",
     "themeColor": null,
@@ -54,34 +26,6 @@
   {
     "id": "festivals",
     "title": "The Magic Celebrations",
-    "ageLabel": "Ages 5-10",
-    "ageFilter": "ages-5-10",
-    "shortDescription": "Festivals and traditions from around the world, illustrated and ready to color.",
-    "fullDescription": "Festivals and traditions from around the world, illustrated and ready to color. From lantern festivals to harvest celebrations, each spread introduces a real tradition, the country it comes from, and the colors and symbols that make it special -- turning coloring time into a passport stamp for curious minds.",
-    "themeColor": null,
-    "buyLink": "https://www.amazon.com/s?k=The+Magic+Celebrations+The+Rama+Creations+coloring+book",
-    "images": [
-      {
-        "src": "assets/covers/festivals/01-front.jpg",
-        "alt": "Front"
-      },
-      {
-        "src": "assets/covers/festivals/02-back.jpg",
-        "alt": "Back"
-      },
-      {
-        "src": "assets/covers/festivals/03-instagram.jpg",
-        "alt": "Instagram"
-      },
-      {
-        "src": "assets/covers/festivals/04-pinterest.jpg",
-        "alt": "Pinterest"
-      }
-    ]
-  },
-  {
-    "id": "festivals-kdp",
-    "title": "The Magic Celebrations",
     "ageLabel": "Ages 7 +",
     "ageFilter": "ages-7",
     "shortDescription": "Pack your crayons for a globetrotting journey where curious kids discover the traditions, folklore, and colors of the world.",
@@ -90,100 +34,13 @@
     "buyLink": "https://www.amazon.com/Magic-Celebrations-Cultural-Coloring-Storybook/dp/B0HNK81JST/ref=sr_1_1?crid=20R6890F1NYJ2&dib=eyJ2IjoiMSJ9.tKg4ntm-yKqLdkEqUrfSPvR1sp7u45AClH-TzXQdt7VcaCfI4vl884Og3O_uNw0KE-rOQwLn3hrxlyPiErt9rH7ejyGIdlHnBq-2R9ZfjO1pc0Q7sjTnbxYli7HE2w4S74vPj0rB56gQUKB0hnc1YIkByZtInPTOmOqKzkXDbP2O8RZDCYu9jjMJuidr_SboA5bzyxnN2HUcbj9LhLNJQbiYpwIuYX13uzSg_MYgWl4.K5T_TN7RDaEKyWwscPrg_b1AQwjkPYwo7FnvwYogA7w&dib_tag=se&keywords=The+Magic+Celebrations%3A+A+Global+Cultural+Coloring+Storybook+for+Curious+Kids&nsdOptOutParam=true&qid=1792685896&sprefix=the+magic+celebrations+a+global+cultural+coloring+storybook+for+curious+kids%2Caps%2C190&sr=8-1",
     "images": [
       {
-        "src": "assets/covers/festivals-kdp/01-book_festivals_kdp_FrontCover_Only_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Frontcover Only 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/02-book_festivals_kdp_FrontCover_Only_8.5x11.0.jpg",
+        "src": "assets/covers/festivals/02-book_festivals_kdp_FrontCover_Only_8.5x11.0.jpg",
         "alt": "Book Festivals Kdp Frontcover Only 8.5X11.0"
       },
       {
-        "src": "assets/covers/festivals-kdp/03-book_festivals_kdp_BackCover_Only_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Backcover Only 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/04-book_festivals_kdp_BackCover_Only_8.5x11.0.jpg",
+        "src": "assets/covers/festivals/04-book_festivals_kdp_BackCover_Only_8.5x11.0.jpg",
         "alt": "Book Festivals Kdp Backcover Only 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/05-book_festivals_kdp_Facebook_Twitter_Post_1200x630_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Facebook Twitter Post 1200X630 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/06-book_festivals_kdp_Facebook_Twitter_Post_1200x630_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Facebook Twitter Post 1200X630 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/07-book_festivals_kdp_FullCover_ActualSize_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Fullcover Actualsize 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/08-book_festivals_kdp_FullCover_ActualSize_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Fullcover Actualsize 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/09-book_festivals_kdp_Instagram_Post_1080x1080_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Instagram Post 1080X1080 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/10-book_festivals_kdp_Instagram_Post_1080x1080_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Instagram Post 1080X1080 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/11-book_festivals_kdp_Instagram_Story_1080x1920_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Instagram Story 1080X1920 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/12-book_festivals_kdp_Instagram_Story_1080x1920_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Instagram Story 1080X1920 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/13-book_festivals_kdp_Pinterest_Pin_1000x1500_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Pinterest Pin 1000X1500 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/14-book_festivals_kdp_Pinterest_Pin_1000x1500_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Pinterest Pin 1000X1500 8.5X11.0"
       }
     ]
-  },
-  {
-    "id": "habits",
-    "title": "The Magic Daily Habits",
-    "ageLabel": "Ages 4-8",
-    "ageFilter": "ages-4-8",
-    "shortDescription": "A Magical Manual for Future Heroes. Turns everyday routines — brushing teeth, tidying up, saying kind words — into a gentle, illustrated adventure with a two-minute story on every page.",
-    "fullDescription": "A Magical Manual for Future Heroes. Turns everyday routines -- brushing teeth, tidying up, saying kind words -- into a gentle, illustrated adventure. Every spread pairs a big, bold coloring page with a two-minute story that makes a simple habit feel like a tiny act of magic, so kids build real routines while having fun with crayons instead of screens. Perfect for bedtime, mornings, or any moment that deserves a small celebration.",
-    "themeColor": null,
-    "buyLink": "https://www.amazon.com/s?k=The+Magic+Daily+Habits+The+Rama+Creations+coloring+book",
-    "images": [
-      {
-        "src": "assets/covers/habits/01-front.jpg",
-        "alt": "Front"
-      },
-      {
-        "src": "assets/covers/habits/02-back.jpg",
-        "alt": "Back"
-      },
-      {
-        "src": "assets/covers/habits/03-instagram.jpg",
-        "alt": "Instagram"
-      },
-      {
-        "src": "assets/covers/habits/04-pinterest.jpg",
-        "alt": "Pinterest"
-      }
-    ]
-  },
-  {
-    "id": "investments",
-    "title": "The Magic of Investments",
-    "ageLabel": "Young Adult",
-    "ageFilter": "young-adult",
-    "shortDescription": "A friendly, story-driven introduction to saving, growing, and understanding money.",
-    "fullDescription": "A friendly, story-driven introduction to saving, growing, and understanding money. Written for young adults just starting to think about their first paycheck, each chapter pairs a short, relatable story with a real concept -- compound interest, budgeting, the difference between saving and investing -- explained without jargon, so financial literacy feels approachable instead of intimidating.",
-    "themeColor": "#DCFCE7",
-    "buyLink": null,
-    "images": []
   }
 ]
