@@ -2,8 +2,8 @@
   {
     "id": "connection",
     "title": "The Magic of Connection",
-    "ageLabel": "All Ages",
-    "ageFilter": "all-ages",
+    "ageLabel": "All Ages none",
+    "ageFilter": "all-ages-none",
     "shortDescription": "Bringing the Temperance Woods Together — teaching cognition and connection through gentle, reflective coloring pages.",
     "fullDescription": "Bringing the Temperance Woods Together -- teaching cognition and connection through gentle, reflective coloring pages. Follow a small cast of forest characters as they navigate misunderstandings, practice listening, and find their way back to each other, one page at a time -- a quiet, screen-free way to talk about feelings, friendship, and what it really means to reconnect.",
     "themeColor": null,
@@ -29,29 +29,25 @@
   },
   {
     "id": "constellations",
-    "title": "The Magic Constellations",
-    "ageLabel": "Ages 5-10",
-    "ageFilter": "ages-5-10",
-    "shortDescription": "A connect-the-dots & coloring journey through the night sky.",
-    "fullDescription": "A connect-the-dots & coloring journey through the night sky. Each page introduces a real constellation -- its shape, its story, and a fun fact about the stars that make it up -- before inviting kids to connect the dots and color the picture themselves. A gentle first step into astronomy that turns screen-free time into a night under the stars, no telescope required.",
+    "title": "The 27 Constellations (KDP Migration)",
+    "ageLabel": "Ages 7 to 15",
+    "ageFilter": "ages-7-to-15",
+    "shortDescription": "Journey through the stars together with 30 nights of ancient cosmic tales, mindful coloring, and bedtime wonder.",
+    "fullDescription": "Blast off on a magical 30-day journey through the stars!\n\nIntroduce your child and yourself to the wonders of the night sky and ancient cosmic wisdom with *The Magic Constellations*. Designed specifically for curious minds, this unique coloring and storybook combines gentle bedtime storytelling with mindfulness, creative coloring, and deep educational keys for parents.\n\nInside this stellar adventure, your child will:\n• Color 27 Unique Constellation Artworks: High-contrast, beautifully illustrated pages featuring bold, clean lines tailored for safe and fun coloring.\n• Explore the 27 Constellations/Nakshatras: Journey through the lunar mansions of Vedic astronomy, discovering the unique shapes, fun facts, and stories behind every star.\n• Uncover Ancient Vedic Myths: Every single day features short, enchanting mythological tales that teach timeless values like courage, patience, and kindness.\n• Unlock \"The Constellation Key\": A special educational box on every spread provides parents with fun facts, astronomical names, and deep philosophical meanings to read aloud.\n\nMore Than Just a Coloring Book\nThis is quality time you will treasure—reading soothing stories side-by-side, exploring the mysteries of the universe, and building mindful bedtime habits together. Whether you are looking for a unique educational gift, a thoughtful introduction to astronomy, or a calming wind-down routine, this book turns every night into a cosmic adventure.\n\nGrab your crayons, look up at the stars, and let your imagination soar!",
     "themeColor": null,
-    "buyLink": null,
+    "buyLink": "https://www.amazon.com/gp/product/B0HN5RJ91D/ref=ox_sc_act_title_1?smid=A1Y53T3O3Q25L8&psc=1",
     "images": [
       {
-        "src": "assets/covers/constellations/01-front.jpg",
-        "alt": "Front"
+        "src": "assets/covers/constellations/02-book_constellations_kdp_FrontCover_Only_8.5x11.0.jpg",
+        "alt": "Book Constellations Kdp Frontcover Only 8.5X11.0"
       },
       {
-        "src": "assets/covers/constellations/02-back.jpg",
-        "alt": "Back"
+        "src": "assets/covers/constellations/03-book_constellations_kdp_BackCover_Only_8.25x11.0.jpg",
+        "alt": "Book Constellations Kdp Backcover Only 8.25X11.0"
       },
       {
-        "src": "assets/covers/constellations/03-instagram.jpg",
-        "alt": "Instagram"
-      },
-      {
-        "src": "assets/covers/constellations/04-pinterest.jpg",
-        "alt": "Pinterest"
+        "src": "assets/covers/constellations/06-book_constellations_kdp_FullCover_ActualSize_8.5x11.0.jpg",
+        "alt": "Book Constellations Kdp Fullcover Actualsize 8.5X11.0"
       }
     ]
   },
@@ -80,6 +76,74 @@
       {
         "src": "assets/covers/festivals/04-pinterest.jpg",
         "alt": "Pinterest"
+      }
+    ]
+  },
+  {
+    "id": "festivals-kdp",
+    "title": "The Magic Celebrations",
+    "ageLabel": "Ages 7 +",
+    "ageFilter": "ages-7",
+    "shortDescription": "Pack your crayons for a globetrotting journey where curious kids discover the traditions, folklore, and colors of the world.",
+    "fullDescription": "Open the Magic Passport and take your child on an unforgettable storybook, world geography, and coloring adventure across 33 amazing global festivals and cultural celebrations!\n\nLooking for an engaging, screen-free way to teach kids about world cultures, global traditions, diversity, and holidays around the world? When curious siblings Leo and Maya open a blank Magic Passport, a glowing door whisks them away on the ultimate educational trip around the globe! Every page turn unlocks a multicultural adventure, a coloring page, and a magic passport stamp.\n\nMore than a children's coloring book, The Magic Celebrations blends bedtime storytelling, social studies, geography, folklore, and creativity into one rich activity book for kids ages 4–8 and 6–10.\n\nA World Tour of 33 Extraordinary Festivals & Holidays:\n\nAsia & The East: Catch rainbow powder at Colors of Holi and light clay lamps for Diwali (India & Nepal). See towering castles in Harbin Ice City (China), release wishes at Sky Lanterns and Golden Lanterns (Taiwan & Thailand), march with a Nebuta Dragon, picnic under Cherry Blossoms (Hanami), and build a Giant Snowman in Japan. Splash with elephants at Songkran Water Splash, float leaf boats for Loy Krathong, and visit the Monkey Buffet in Thailand. Slide at the Boryeong Mud Festival (South Korea), ride Desert Camels (Pushkar), fly Dancing Kites (Gujarat), and watch the Lunar New Year Lion Dance!\nEurope & The UK: Stomp in squished tomatoes at La Tomatina (Tomato Splat) and join a Paint Battle in Spain. Sail a Viking Longship (Scotland), wear a Venetian Mask (Italy), chase Rolling Cheese and flip skillets in the Pancake Race (England), wear furry Winter Masks with bells (Bulgaria), admire a tulip Flower Carpet (Belgium), carve Turnip Lanterns (Switzerland), and find Lucky Shamrocks (Ireland)!\nThe Americas: Soar with 500 Desert Balloons and catch Mardi Gras Beads in the USA. Paint Day of the Dead Sugar Skulls, carve giant Radishes, and spin in the Pineapple Dance in Oaxaca, Mexico. Meet Chaska the Sun Llama in the Andes of Peru, glide on the largest frozen Ice Skating canal in Canada, and dance at Carnival in Brazil!\nWhat’s Inside This Educational Read-and-Color Book:\n\n33 Bite-Sized Story Adventures: Sensory, kid-friendly stories with Leo and Maya that make reading aloud fun for preschoolers, kindergarteners, and early readers.\nThe Traveler’s Field Notes: Every festival includes Celebrated In geography locations, The Deeper Meaning (mindfulness, gratitude, and kindness), whimsical Myth & Lore, and a Real-World Fun Fact!\n34 Full-Page Coloring Illustrations: Bold line art for all 33 festivals, plus a giant Magic World Map spread.\n10 Interactive Passport & DIY Activity Pages: 5 My Passport Notes and 5 DIY Festival Activity pages to reflect on favorite celebrations and draw magic stamps!\nPerfect For:\n\nHomeschool & Classroom Social Studies: An effortless geography, diversity, and world holidays unit study supplement for elementary teachers.\nFamily Travel & Meaningful Gifts: Inspires young globetrotters on road trips, flights, birthdays, and holidays!\nGrab your crayons, open your Magic Passport, and click \"Buy Now\" to start your global adventure today!",
+    "themeColor": null,
+    "buyLink": "https://www.amazon.com/Magic-Celebrations-Cultural-Coloring-Storybook/dp/B0HNK81JST/ref=sr_1_1?crid=20R6890F1NYJ2&dib=eyJ2IjoiMSJ9.tKg4ntm-yKqLdkEqUrfSPvR1sp7u45AClH-TzXQdt7VcaCfI4vl884Og3O_uNw0KE-rOQwLn3hrxlyPiErt9rH7ejyGIdlHnBq-2R9ZfjO1pc0Q7sjTnbxYli7HE2w4S74vPj0rB56gQUKB0hnc1YIkByZtInPTOmOqKzkXDbP2O8RZDCYu9jjMJuidr_SboA5bzyxnN2HUcbj9LhLNJQbiYpwIuYX13uzSg_MYgWl4.K5T_TN7RDaEKyWwscPrg_b1AQwjkPYwo7FnvwYogA7w&dib_tag=se&keywords=The+Magic+Celebrations%3A+A+Global+Cultural+Coloring+Storybook+for+Curious+Kids&nsdOptOutParam=true&qid=1792685896&sprefix=the+magic+celebrations+a+global+cultural+coloring+storybook+for+curious+kids%2Caps%2C190&sr=8-1",
+    "images": [
+      {
+        "src": "assets/covers/festivals-kdp/01-book_festivals_kdp_FrontCover_Only_8.25x11.0.jpg",
+        "alt": "Book Festivals Kdp Frontcover Only 8.25X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/02-book_festivals_kdp_FrontCover_Only_8.5x11.0.jpg",
+        "alt": "Book Festivals Kdp Frontcover Only 8.5X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/03-book_festivals_kdp_BackCover_Only_8.25x11.0.jpg",
+        "alt": "Book Festivals Kdp Backcover Only 8.25X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/04-book_festivals_kdp_BackCover_Only_8.5x11.0.jpg",
+        "alt": "Book Festivals Kdp Backcover Only 8.5X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/05-book_festivals_kdp_Facebook_Twitter_Post_1200x630_8.25x11.0.jpg",
+        "alt": "Book Festivals Kdp Facebook Twitter Post 1200X630 8.25X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/06-book_festivals_kdp_Facebook_Twitter_Post_1200x630_8.5x11.0.jpg",
+        "alt": "Book Festivals Kdp Facebook Twitter Post 1200X630 8.5X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/07-book_festivals_kdp_FullCover_ActualSize_8.25x11.0.jpg",
+        "alt": "Book Festivals Kdp Fullcover Actualsize 8.25X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/08-book_festivals_kdp_FullCover_ActualSize_8.5x11.0.jpg",
+        "alt": "Book Festivals Kdp Fullcover Actualsize 8.5X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/09-book_festivals_kdp_Instagram_Post_1080x1080_8.25x11.0.jpg",
+        "alt": "Book Festivals Kdp Instagram Post 1080X1080 8.25X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/10-book_festivals_kdp_Instagram_Post_1080x1080_8.5x11.0.jpg",
+        "alt": "Book Festivals Kdp Instagram Post 1080X1080 8.5X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/11-book_festivals_kdp_Instagram_Story_1080x1920_8.25x11.0.jpg",
+        "alt": "Book Festivals Kdp Instagram Story 1080X1920 8.25X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/12-book_festivals_kdp_Instagram_Story_1080x1920_8.5x11.0.jpg",
+        "alt": "Book Festivals Kdp Instagram Story 1080X1920 8.5X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/13-book_festivals_kdp_Pinterest_Pin_1000x1500_8.25x11.0.jpg",
+        "alt": "Book Festivals Kdp Pinterest Pin 1000X1500 8.25X11.0"
+      },
+      {
+        "src": "assets/covers/festivals-kdp/14-book_festivals_kdp_Pinterest_Pin_1000x1500_8.5x11.0.jpg",
+        "alt": "Book Festivals Kdp Pinterest Pin 1000X1500 8.5X11.0"
       }
     ]
   },
