@@ -9,8 +9,8 @@ Phase 0  One-time setup on a new machine
 Phase 1  Add or update a book
 Phase 2  Regenerate the catalog (data/books.json + assets/covers/)
 Phase 3  Preview locally
-Phase 4  Commit and push
-Phase 5  GitHub Pages auto-deploy (no command needed -- it's automatic)
+Phase 4  Commit and push to the pipeline repository
+Phase 5  Copy the site to the website repository
 Phase 6  Verify the live site
 ```
 
@@ -57,8 +57,9 @@ books (e.g. two folders with the same `title`) -- every folder in
 testing with copied folders, delete them from `content/books/` before
 Phase 4 and re-run this command to regenerate a clean `data/books.json`.
 
-Run this any time after Phase 1, and again any time you want to confirm
-what the live site will look like before pushing.
+The deployment workflow does not run this generator. Run it locally after
+changing book source data or images, then include its updated catalog and
+cover assets in the site folder before publishing.
 
 ## Phase 3: Preview locally
 
@@ -73,63 +74,40 @@ browser. What it does: serves the folder over `http://` so
 `file://` will NOT load the catalog, since browsers block `fetch()` of
 local files under `file://`. Stop the server with `Ctrl+C` when done.
 
-## Phase 4: Commit and push
+## Phase 4: Commit and push to the pipeline repository
 
 ```bash
 git add rama-creations-site
-git commit -m "Update book catalog"
+git commit -m "Update website"
 git push
 ```
 
-What it does: pushes your `content/books/` changes (and, optionally, the
-regenerated `data/books.json`/`assets/covers/` -- see Phase 5, which
-regenerates them again automatically anyway) to the repo's default branch.
+Push to the `main` branch. Include all intended website changes, and for
+book updates include the generated `data/books.json` and
+`assets/covers/` changes. Pushing does not regenerate these files for you.
 
-## Phase 5: GitHub Pages auto-deploy
+## Phase 5: Copy the site to the website repository
 
-No command to run -- `.github/workflows/deploy-site.yml` does this
-automatically on every push to `main`:
-1. Checks out the repo.
-2. Installs `Pillow`.
-3. Runs `python rama-creations-site/tools/generate_catalog.py` (same as
-   Phase 2) so the deployed site always has a freshly regenerated catalog,
-   even if you forgot to run Phase 2 locally.
-4. Uploads `rama-creations-site/` as-is (no build step) and publishes it
-   via GitHub Pages.
+No command is needed. The workflow at
+`../.github/workflows/deploy-site.yml` runs automatically when a commit
+affecting `rama-creations-site/**` is pushed to this repository's `main`
+branch. It copies the entire `rama-creations-site/` folder as-is to the
+`main` branch of `developerpraj/rama-creations-site`. It does not install
+dependencies, regenerate the book catalog, or build the site.
 
-One-time repo setting required before this works: **Settings -> Pages ->
-Source -> GitHub Actions**.
-
-**Custom domain (theramacreations.com):** the repo already contains a
-`rama-creations-site/CNAME` file with `theramacreations.com` in it, which
-GitHub Pages reads automatically on deploy. Two things still need doing
-once, outside this repo:
-1. At your domain registrar/DNS provider, point the domain at GitHub Pages:
-   an `A` record for the apex domain (`theramacreations.com`) to GitHub
-   Pages' IPs (`185.199.108.153`, `.109.153`, `.110.153`, `.111.153`), plus
-   a `CNAME` record for `www` pointing to `<username>.github.io` if you
-   want `www.theramacreations.com` to work too.
-2. In **Settings -> Pages**, confirm the custom domain shows
-   `theramacreations.com` (GitHub picks this up from the `CNAME` file after
-   the first deploy) and enable **Enforce HTTPS** once the certificate is
-   issued (can take a few minutes to a few hours after DNS propagates).
-
-If you want to trigger a deploy without pushing new commits (e.g. to
-re-run after a Pages settings change), use the GitHub CLI:
-
-```bash
-gh workflow run deploy-site.yml
-```
-
-What it does: manually re-runs the same workflow from Phase 5 on demand.
+The destination repository's GitHub Pages configuration serves its `main`
+branch root, and the custom domain is `theramacreations.com`. There is no
+manual-dispatch option for the copy workflow; a new push affecting the site
+folder is required to run it.
 
 ## Phase 6: Verify the live site
 
 ```bash
-gh run watch
+gh run list --workflow deploy-site.yml --limit 5
+gh run watch <run-id>
 ```
 
-What it does: streams the status of the most recent workflow run so you
-can see the deploy finish (or catch an error) without refreshing the
-Actions tab. Once it succeeds, your site is live at
-`https://theramacreations.com/`.
+Run these commands from the pipeline repository. They confirm the site-copy
+workflow succeeded; GitHub Pages then publishes the destination repository's
+updated branch. Check <https://theramacreations.com/> after that Pages build
+completes.

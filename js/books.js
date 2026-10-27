@@ -42,7 +42,7 @@ function sanitizeBookDescription(value) {
   return fragment;
 }
 
-function buildBookCard(book) {
+function buildBookCard(book, onShowMore) {
   const article = document.createElement("article");
   article.className = "book-card";
 
@@ -80,12 +80,6 @@ function buildBookCard(book) {
   body.appendChild(badge);
   body.appendChild(h3);
   body.appendChild(p);
-  const fullDescription = document.createElement("div");
-  fullDescription.className = "book-description";
-  fullDescription.hidden = true;
-  fullDescription.appendChild(sanitizeBookDescription(book.fullDescription));
-  body.appendChild(fullDescription);
-
   // "Show more" sits above the buy/coming-soon action, which is centered in
   // its own row -- both wrapped so the CSS can lay them out top-to-bottom.
   const actions = document.createElement("div");
@@ -99,13 +93,7 @@ function buildBookCard(book) {
     showMoreBtn.type = "button";
     showMoreBtn.className = "show-more-btn";
     showMoreBtn.textContent = "Show more";
-    let expanded = false;
-    showMoreBtn.addEventListener("click", () => {
-      expanded = !expanded;
-      p.hidden = expanded;
-      fullDescription.hidden = !expanded;
-      showMoreBtn.textContent = expanded ? "Show less" : "Show more";
-    });
+    showMoreBtn.addEventListener("click", onShowMore);
     actions.appendChild(showMoreBtn);
   }
 
@@ -196,7 +184,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  const entries = books.map((book) => buildBookCard(book));
+  const entries = books.map((book) => buildBookCard(book, () => openQuickView(book, { fullscreen: true })));
   entries.forEach(({ article }) => grid.appendChild(article));
 
   function applySearchAndFilter() {
@@ -350,8 +338,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     return wrapper;
   }
 
-  function openQuickView(book) {
+  function openQuickView(book, { fullscreen = false } = {}) {
     modalContent.innerHTML = "";
+    modal.classList.toggle("book-modal--fullscreen", fullscreen);
 
     if (book.images && book.images.length > 0) {
       modalContent.appendChild(buildCarousel(book.images, { onOpenLightbox: openLightbox, expandable: true }));
@@ -395,7 +384,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     closeButton.className = "btn btn-secondary";
     closeButton.type = "button";
     closeButton.dataset.closeModal = "";
-    closeButton.textContent = "Close";
+    closeButton.textContent = fullscreen ? "Close full-screen view" : "Close";
     actions.appendChild(closeButton);
     bodyEl.append(badge, title, description, actions);
     modalContent.appendChild(bodyEl);
