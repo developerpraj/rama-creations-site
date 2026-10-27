@@ -22,7 +22,9 @@ book.json fields:
     ageLabel            required, e.g. "Ages 6-10" -- shown on the badge
     shortDescription    required -- the card's default teaser text
     fullDescription     optional -- shown by "Show more"; defaults to
-                        shortDescription (which hides the "Show more" link)
+                        shortDescription (which hides the "Show more" link).
+                        The site safely renders paragraphs, bold/italic text,
+                        and ordered or unordered lists.
     ageFilter           optional -- auto-derived (slugified) from ageLabel
                         if omitted; only set this if you want two different
                         ageLabels to share one filter bucket

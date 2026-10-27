@@ -717,6 +717,27 @@ section {
   margin: 0 0 8px;
 }
 
+.book-description {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.book-description p {
+  margin: 0 0 0.85em;
+}
+
+.book-description ul,
+.book-description ol {
+  margin: 0.45em 0 0.9em;
+  padding-left: 1.5em;
+}
+
+.book-description li {
+  margin-bottom: 0.45em;
+}
+
 .show-more-btn {
   display: inline-block;
   background: none;
@@ -1074,6 +1095,10 @@ section {
 .book-modal-body p {
   color: var(--ink-muted);
   margin: 0 0 18px;
+}
+
+.book-modal-body .book-description {
+  margin-bottom: 18px;
 }
 
 /* ---------- Forms ---------- */

@@ -12,6 +12,36 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function sanitizeBookDescription(value) {
+  const raw = String(value || "");
+  const hasMarkup = /<\s*(?:b|strong|i|em|p|div|br|ul|ol|li)\b/i.test(raw);
+  const source = hasMarkup
+    ? raw
+    : raw.trim()
+      ? `<p>${escapeHtml(raw).replace(/\n\s*\n/g, "</p><p>").replace(/\n/g, "<br>")}</p>`
+      : "";
+  const parsed = new DOMParser().parseFromString(source, "text/html");
+  const allowedTags = new Set(["B", "STRONG", "I", "EM", "P", "DIV", "BR", "UL", "OL", "LI"]);
+  const fragment = document.createDocumentFragment();
+  const copyChildren = (from, to) => {
+    Array.from(from.childNodes).forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        to.appendChild(document.createTextNode(node.nodeValue || ""));
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (!allowedTags.has(node.tagName)) {
+          copyChildren(node, to);
+          return;
+        }
+        const clean = document.createElement(node.tagName.toLowerCase());
+        copyChildren(node, clean);
+        to.appendChild(clean);
+      }
+    });
+  };
+  copyChildren(parsed.body, fragment);
+  return fragment;
+}
+
 function buildBookCard(book) {
   const article = document.createElement("article");
   article.className = "book-card";
@@ -50,6 +80,11 @@ function buildBookCard(book) {
   body.appendChild(badge);
   body.appendChild(h3);
   body.appendChild(p);
+  const fullDescription = document.createElement("div");
+  fullDescription.className = "book-description";
+  fullDescription.hidden = true;
+  fullDescription.appendChild(sanitizeBookDescription(book.fullDescription));
+  body.appendChild(fullDescription);
 
   // "Show more" sits above the buy/coming-soon action, which is centered in
   // its own row -- both wrapped so the CSS can lay them out top-to-bottom.
@@ -67,7 +102,8 @@ function buildBookCard(book) {
     let expanded = false;
     showMoreBtn.addEventListener("click", () => {
       expanded = !expanded;
-      p.textContent = expanded ? book.fullDescription : book.shortDescription;
+      p.hidden = expanded;
+      fullDescription.hidden = !expanded;
       showMoreBtn.textContent = expanded ? "Show less" : "Show more";
     });
     actions.appendChild(showMoreBtn);
@@ -326,21 +362,42 @@ document.addEventListener("DOMContentLoaded", async () => {
       modalContent.appendChild(mediaEl);
     }
 
-    const actionHtml = book.buyLink
-      ? `<a class="btn btn-buy" href="${book.buyLink}" target="_blank" rel="noopener noreferrer">${CART_ICON_SVG}Buy on Amazon</a>`
-      : `<button class="btn btn-secondary" type="button" disabled title="Coming soon on Amazon KDP">Coming soon</button>`;
-
     const bodyEl = document.createElement("div");
     bodyEl.className = "book-modal-body";
-    bodyEl.innerHTML = `
-      <span class="badge">${escapeHtml(book.ageLabel)}</span>
-      <h3>${escapeHtml(book.title)}</h3>
-      <p>${escapeHtml(book.fullDescription || book.shortDescription)}</p>
-      <div class="book-modal-actions">
-        ${actionHtml}
-        <button class="btn btn-secondary" type="button" data-close-modal>Close</button>
-      </div>
-    `;
+    const badge = document.createElement("span");
+    badge.className = "badge";
+    badge.textContent = book.ageLabel || "";
+    const title = document.createElement("h3");
+    title.textContent = book.title || "";
+    const description = document.createElement("div");
+    description.className = "book-description";
+    description.appendChild(sanitizeBookDescription(book.fullDescription || book.shortDescription));
+    const actions = document.createElement("div");
+    actions.className = "book-modal-actions";
+    if (book.buyLink) {
+      const buyLink = document.createElement("a");
+      buyLink.className = "btn btn-buy";
+      buyLink.href = book.buyLink;
+      buyLink.target = "_blank";
+      buyLink.rel = "noopener noreferrer";
+      buyLink.innerHTML = `${CART_ICON_SVG}Buy on Amazon`;
+      actions.appendChild(buyLink);
+    } else {
+      const comingSoon = document.createElement("button");
+      comingSoon.className = "btn btn-secondary";
+      comingSoon.type = "button";
+      comingSoon.disabled = true;
+      comingSoon.title = "Coming soon on Amazon KDP";
+      comingSoon.textContent = "Coming soon";
+      actions.appendChild(comingSoon);
+    }
+    const closeButton = document.createElement("button");
+    closeButton.className = "btn btn-secondary";
+    closeButton.type = "button";
+    closeButton.dataset.closeModal = "";
+    closeButton.textContent = "Close";
+    actions.appendChild(closeButton);
+    bodyEl.append(badge, title, description, actions);
     modalContent.appendChild(bodyEl);
     bodyEl.querySelector("[data-close-modal]").addEventListener("click", () => modal.close());
 

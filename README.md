@@ -56,7 +56,7 @@ editing either. `data/books.json` is **generated**, not hand-written.
    ```
    - `title`, `ageLabel`, `shortDescription` are required. Everything else
      is optional.
-   - `fullDescription` -- omit it to make "Show more" not appear at all
+   - `fullDescription` -- omit it to make "Show more" not appear at all. The site safely renders paragraphs, bold/italic text, and ordered or unordered lists in this field; descriptions shipped from Studio can be formatted with its rich-text editor.
      (the card just shows `shortDescription` with no expand option).
    - `ageLabel` can be any text ("Ages 6-10", "Teens", "6+") -- the age
      filter dropdown's options are built from whatever values show up
