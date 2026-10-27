@@ -52,26 +52,6 @@
     ]
   },
   {
-    "id": "festivals",
-    "title": "The Magic Celebrations",
-    "ageLabel": "Ages 7 +",
-    "ageFilter": "ages-7",
-    "shortDescription": "Pack your crayons for a globetrotting journey where curious kids discover the traditions, folklore, and colors of the world.",
-    "fullDescription": "<p>Open the Magic Passport and take your child on an unforgettable storybook, world geography, and coloring adventure across 33 amazing global festivals and cultural celebrations!</p><p>Looking for an engaging, screen-free way to teach kids about world cultures, global traditions, diversity, and holidays around the world? When curious siblings Leo and Maya open a blank Magic Passport, a glowing door whisks them away on the ultimate educational trip around the globe! Every page turn unlocks a multicultural adventure, a coloring page, and a magic passport stamp.</p><p>More than a children&#x27;s coloring book, The Magic Celebrations blends bedtime storytelling, social studies, geography, folklore, and creativity into one rich activity book for kids ages 4–8 and 6–10.</p><p><strong>A World Tour of 33 Extraordinary Festivals &amp; Holidays:</strong></p><ul><li><strong>Asia &amp; The East:</strong> Catch rainbow powder at Colors of Holi and light clay lamps for Diwali (India &amp; Nepal). See towering castles in Harbin Ice City (China), release wishes at Sky Lanterns and Golden Lanterns (Taiwan &amp; Thailand), march with a Nebuta Dragon, picnic under Cherry Blossoms (Hanami), and build a Giant Snowman in Japan. Splash with elephants at Songkran Water Splash, float leaf boats for Loy Krathong, and visit the Monkey Buffet in Thailand. Slide at the Boryeong Mud Festival (South Korea), ride Desert Camels (Pushkar), fly Dancing Kites (Gujarat), and watch the Lunar New Year Lion Dance!</li><li><strong>Europe &amp; The UK:</strong> Stomp in squished tomatoes at La Tomatina (Tomato Splat) and join a Paint Battle in Spain. Sail a Viking Longship (Scotland), wear a Venetian Mask (Italy), chase Rolling Cheese and flip skillets in the Pancake Race (England), wear furry Winter Masks with bells (Bulgaria), admire a tulip Flower Carpet (Belgium), carve Turnip Lanterns (Switzerland), and find Lucky Shamrocks (Ireland)!</li><li><strong>The Americas:</strong> Soar with 500 Desert Balloons and catch Mardi Gras Beads in the USA. Paint Day of the Dead Sugar Skulls, carve giant Radishes, and spin in the Pineapple Dance in Oaxaca, Mexico. Meet Chaska the Sun Llama in the Andes of Peru, glide on the largest frozen Ice Skating canal in Canada, and dance at Carnival in Brazil!</li></ul><p><strong>What’s Inside This Educational Read-and-Color Book:</strong></p><ul><li><strong>33 Bite-Sized Story Adventures:</strong> Sensory, kid-friendly stories with Leo and Maya that make reading aloud fun for preschoolers, kindergarteners, and early readers.</li><li><strong>The Traveler’s Field Notes:</strong> Every festival includes Celebrated In geography locations, The Deeper Meaning (mindfulness, gratitude, and kindness), whimsical Myth &amp; Lore, and a Real-World Fun Fact!</li><li><strong>34 Full-Page Coloring Illustrations:</strong> Bold line art for all 33 festivals, plus a giant Magic World Map spread.</li><li><strong>10 Interactive Passport &amp; DIY Activity Pages:</strong> 5 My Passport Notes and 5 DIY Festival Activity pages to reflect on favorite celebrations and draw magic stamps!</li></ul><p><strong>Perfect For:</strong></p><ul><li><strong>Homeschool &amp; Classroom Social Studies:</strong> An effortless geography, diversity, and world holidays unit study supplement for elementary teachers.</li><li><strong>Family Travel &amp; Meaningful Gifts:</strong> Inspires young globetrotters on road trips, flights, birthdays, and holidays!</li></ul><p>Grab your crayons, open your Magic Passport, and click &quot;Buy Now&quot; to start your global adventure today!</p>",
-    "themeColor": null,
-    "buyLink": "https://www.amazon.com/Magic-Celebrations-Cultural-Coloring-Storybook/dp/B0HNK81JST/ref=sr_1_1?crid=20R6890F1NYJ2&dib=eyJ2IjoiMSJ9.tKg4ntm-yKqLdkEqUrfSPvR1sp7u45AClH-TzXQdt7VcaCfI4vl884Og3O_uNw0KE-rOQwLn3hrxlyPiErt9rH7ejyGIdlHnBq-2R9ZfjO1pc0Q7sjTnbxYli7HE2w4S74vPj0rB56gQUKB0hnc1YIkByZtInPTOmOqKzkXDbP2O8RZDCYu9jjMJuidr_SboA5bzyxnN2HUcbj9LhLNJQbiYpwIuYX13uzSg_MYgWl4.K5T_TN7RDaEKyWwscPrg_b1AQwjkPYwo7FnvwYogA7w&dib_tag=se&keywords=The+Magic+Celebrations%3A+A+Global+Cultural+Coloring+Storybook+for+Curious+Kids&nsdOptOutParam=true&qid=1792685896&sprefix=the+magic+celebrations+a+global+cultural+coloring+storybook+for+curious+kids%2Caps%2C190&sr=8-1",
-    "images": [
-      {
-        "src": "assets/covers/festivals/02-book_festivals_kdp_FrontCover_Only_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Frontcover Only 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals/04-book_festivals_kdp_BackCover_Only_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Backcover Only 8.5X11.0"
-      }
-    ]
-  },
-  {
     "id": "festivals-kdp",
     "title": "The Magic Celebrations",
     "ageLabel": "Ages 7+",
