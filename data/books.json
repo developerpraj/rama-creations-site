@@ -18,10 +18,6 @@
         "alt": "Book Connection Backcover Only 8.5X11.0"
       },
       {
-        "src": "assets/covers/connection/03-book_connection_Facebook_Twitter_Post_1200x630_8.5x11.0.jpg",
-        "alt": "Book Connection Facebook Twitter Post 1200X630 8.5X11.0"
-      },
-      {
         "src": "assets/covers/connection/04-book_connection_FullCover_ActualSize_8.5x11.0.jpg",
         "alt": "Book Connection Fullcover Actualsize 8.5X11.0"
       }
@@ -30,7 +26,7 @@
   {
     "id": "constellations",
     "title": "The Magic Constellations",
-    "ageLabel": "Ages 7 +",
+    "ageLabel": "Ages 7+",
     "ageFilter": "ages-7",
     "shortDescription": "Journey through the stars together with 30 nights of ancient cosmic tales, mindful coloring, and bedtime wonder.",
     "fullDescription": "<p>Blast off on a magical 30-day journey through the stars!</p><p>Introduce your child and yourself to the wonders of the night sky and ancient cosmic wisdom with <em>The Magic Constellations</em>. Designed specifically for curious minds, this unique coloring and storybook combines gentle bedtime storytelling with mindfulness, creative coloring, and deep educational keys for parents.</p><p><strong>Inside this stellar adventure, your child will:</strong></p><ul><li><strong>Color 27 Unique Constellation Artworks:</strong> High-contrast, beautifully illustrated pages featuring bold, clean lines tailored for safe and fun coloring.</li><li><strong>Explore the 27 Constellations/Nakshatras:</strong> Journey through the lunar mansions of Vedic astronomy, discovering the unique shapes, fun facts, and stories behind every star.</li><li><strong>Uncover Ancient Vedic Myths:</strong> Every single day features short, enchanting mythological tales that teach timeless values like courage, patience, and kindness.</li><li><strong>Unlock &quot;The Constellation Key&quot;:</strong> A special educational box on every spread provides parents with fun facts, astronomical names, and deep philosophical meanings to read aloud.</li></ul><p><strong>More Than Just a Coloring Book</strong></p><p>This is quality time you will treasure—reading soothing stories side-by-side, exploring the mysteries of the universe, and building mindful bedtime habits together. Whether you are looking for a unique educational gift, a thoughtful introduction to astronomy, or a calming wind-down routine, this book turns every night into a cosmic adventure.</p><p>Grab your crayons, look up at the stars, and let your imagination soar!</p>",
@@ -38,16 +34,16 @@
     "buyLink": "https://www.amazon.com/dp/B0HN5RJ91D",
     "images": [
       {
-        "src": "assets/covers/constellations/02-book_constellations_kdp_FrontCover_Only_8.5x11.0.jpg",
-        "alt": "Book Constellations Kdp Frontcover Only 8.5X11.0"
+        "src": "assets/covers/constellations/01-front.jpg",
+        "alt": "Front"
       },
       {
-        "src": "assets/covers/constellations/03-book_constellations_kdp_BackCover_Only_8.25x11.0.jpg",
-        "alt": "Book Constellations Kdp Backcover Only 8.25X11.0"
+        "src": "assets/covers/constellations/02-back.jpg",
+        "alt": "Back"
       },
       {
-        "src": "assets/covers/constellations/06-book_constellations_kdp_FullCover_ActualSize_8.5x11.0.jpg",
-        "alt": "Book Constellations Kdp Fullcover Actualsize 8.5X11.0"
+        "src": "assets/covers/constellations/03-full.jpg",
+        "alt": "Full"
       }
     ]
   },
@@ -72,50 +68,6 @@
       {
         "src": "assets/covers/festivals-kdp/03-book_festivals_kdp_BackCover_Only_8.25x11.0.jpg",
         "alt": "Book Festivals Kdp Backcover Only 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/04-book_festivals_kdp_BackCover_Only_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Backcover Only 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/05-book_festivals_kdp_Facebook_Twitter_Post_1200x630_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Facebook Twitter Post 1200X630 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/06-book_festivals_kdp_Facebook_Twitter_Post_1200x630_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Facebook Twitter Post 1200X630 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/07-book_festivals_kdp_FullCover_ActualSize_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Fullcover Actualsize 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/08-book_festivals_kdp_FullCover_ActualSize_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Fullcover Actualsize 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/09-book_festivals_kdp_Instagram_Post_1080x1080_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Instagram Post 1080X1080 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/10-book_festivals_kdp_Instagram_Post_1080x1080_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Instagram Post 1080X1080 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/11-book_festivals_kdp_Instagram_Story_1080x1920_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Instagram Story 1080X1920 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/12-book_festivals_kdp_Instagram_Story_1080x1920_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Instagram Story 1080X1920 8.5X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/13-book_festivals_kdp_Pinterest_Pin_1000x1500_8.25x11.0.jpg",
-        "alt": "Book Festivals Kdp Pinterest Pin 1000X1500 8.25X11.0"
-      },
-      {
-        "src": "assets/covers/festivals-kdp/14-book_festivals_kdp_Pinterest_Pin_1000x1500_8.5x11.0.jpg",
-        "alt": "Book Festivals Kdp Pinterest Pin 1000X1500 8.5X11.0"
       }
     ]
   },

@@ -43,3 +43,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+// The "Reviews" links (nav + footer) stay hidden until data/reviews.json has at
+// least one review, so the live site never links to an empty page. They always
+// show while previewing locally, where the page explains how to add reviews.
+document.addEventListener("DOMContentLoaded", async () => {
+  const links = document.querySelectorAll("[data-reviews-link]");
+  if (!links.length) return;
+
+  let show = window.location.protocol === "file:" || ["localhost", "127.0.0.1", "[::1]", "::1"].includes(window.location.hostname);
+  if (!show) {
+    try {
+      const response = await fetch("data/reviews.json");
+      const data = response.ok ? await response.json() : [];
+      show = Array.isArray(data) && data.length > 0;
+    } catch (error) {
+      show = false;
+    }
+  }
+  links.forEach((link) => {
+    link.hidden = !show;
+  });
+});

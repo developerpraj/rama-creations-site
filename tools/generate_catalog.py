@@ -2,10 +2,14 @@
 """
 Regenerates rama-creations-site/data/books.json from
 rama-creations-site/content/books/<slug>/ folders. This IS the "drop a
-folder, get a book" pipeline -- run it locally before previewing, and it
-also runs automatically in .github/workflows/deploy-site.yml before every
-GitHub Pages deploy, so dropping a new book folder and pushing is the only
-step a developer needs to take.
+folder, get a book" pipeline -- run it locally before previewing AND before
+committing, then commit the generated files with the sources. The deploy
+workflow (.github/workflows/deploy-site.yml) only copies the folder as-is; it
+does not run this script.
+
+As its last step it also runs generate_reviews.py, which turns the review
+screenshots in content/reviews/ into data/reviews.json (the homepage's
+"Review Sky"), so one command refreshes everything.
 
 Expected folder layout per book (one folder per book, folder name = its id):
 
@@ -14,8 +18,7 @@ Expected folder layout per book (one folder per book, folder name = its id):
         images/                 (optional)
             01-front.jpg
             02-back.jpg
-            03-instagram.jpg
-            04-pinterest.jpg
+            03-full.jpg
 
 book.json fields:
     title              required
@@ -50,6 +53,7 @@ Usage:
 
 from __future__ import annotations
 
+import importlib.util
 import json
 import re
 import sys
@@ -92,7 +96,7 @@ def process_images(slug: str, images_dir: Path) -> list:
             dest_name = f"{src.stem}.jpg"
             dest_path = out_dir / dest_name
             img.save(dest_path, quality=85, optimize=True)
-        # "01-front" -> "Front", "instagram" -> "Instagram"
+        # "01-front" -> "Front", "03-full" -> "Full"
         label_source = src.stem.split("-", 1)[-1] if "-" in src.stem else src.stem
         alt_label = label_source.replace("_", " ").replace("-", " ").strip().title()
         entries.append({"src": f"assets/covers/{slug}/{dest_name}", "alt": alt_label})
@@ -126,6 +130,15 @@ def build_entry(folder: Path, index: int) -> dict:
     }
 
 
+def generate_reviews() -> int:
+    # Loaded by path so this works however this file itself was imported.
+    spec = importlib.util.spec_from_file_location("generate_reviews", Path(__file__).with_name("generate_reviews.py"))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    print("\nReview screenshots:")
+    return module.main(["--site-root", str(SITE_ROOT)])
+
+
 def main() -> int:
     if not CONTENT_DIR.is_dir():
         print(f"ERROR: {CONTENT_DIR} does not exist -- nothing to generate.")
@@ -149,7 +162,8 @@ def main() -> int:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(entries, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"\nWrote {len(entries)} book(s) to {OUTPUT_PATH}")
-    return 1 if had_error else 0
+    reviews_failed = generate_reviews() != 0
+    return 1 if had_error or reviews_failed else 0
 
 
 if __name__ == "__main__":

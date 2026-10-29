@@ -1,0 +1,733 @@
+/* ---------- "The Review Sky" (js/reviews.js) ---------- */
+/* Reader-review screenshots become stars, grouped into constellations. */
+
+.reviews-section[hidden] {
+  display: none;
+}
+
+.reviews-section {
+  scroll-margin-top: 76px; /* sticky header height, so a #reviews link doesn't hide the heading */
+}
+
+.reviews-section .section-heading h2 .accent {
+  background: linear-gradient(120deg, var(--violet), var(--berry), var(--sun-text, var(--sun)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* A plain wrapper: the constellations are cards on the page itself, colored by
+   whatever page color or nav "Pick your color" theme is active. */
+.review-sky {
+  position: relative;
+  color: var(--ink);
+}
+
+/* ----- Top bar, grid, panels ----- */
+.sky-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 18px;
+  margin-bottom: 18px;
+}
+
+.sky-legend {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--ink-muted);
+}
+
+.sky-wish {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--on-sun, #2B1C05);
+  background: linear-gradient(120deg, var(--sun-soft), var(--sun));
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 18px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px -10px rgba(216, 148, 34, 0.7);
+  transition: transform 0.15s ease;
+}
+
+.sky-wish:hover {
+  transform: translateY(-2px) rotate(-1deg);
+}
+
+.sky-wish:focus-visible,
+.sky-cta:focus-visible {
+  outline: 3px solid var(--violet-soft);
+  outline-offset: 3px;
+}
+
+.sky-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.sky-grid--solo {
+  grid-template-columns: minmax(0, 580px);
+  justify-content: center;
+}
+
+@media (min-width: 881px) {
+  .sky-grid > .const:last-child:nth-child(odd):not(:only-child) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, 580px);
+  }
+}
+
+@media (max-width: 880px) {
+  .sky-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Each constellation is a card, like the cards elsewhere on the site. */
+.const {
+  padding: 16px 16px 10px;
+  border-radius: var(--radius);
+  background: var(--paper-panel);
+  border: 1px solid var(--border);
+}
+
+.const-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin: 0 4px 6px;
+}
+
+.const-name {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  color: var(--ink);
+}
+
+.const-note {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+}
+
+/* The panel's own box is the container: star sizes come from its width. */
+.const-stage {
+  position: relative;
+  aspect-ratio: var(--aspect, 1.4);
+  container-type: inline-size;
+}
+
+.const-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.edge-dots {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-opacity: 0.55;
+  stroke-width: 0.55;
+  stroke-linecap: round;
+  stroke-dasharray: 0.01 1.9;
+}
+
+/* pathLength=1 on these, so the dash trick below draws each line once. */
+.edge-glow {
+  fill: none;
+  stroke: var(--violet);
+  stroke-width: 0.75;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.const.is-lit .edge-glow {
+  animation: edge-draw 0.9s ease forwards;
+  animation-delay: calc(0.35s + var(--e) * 0.26s);
+}
+
+@keyframes edge-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ----- The stars (round screenshot crops) ----- */
+.star {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: clamp(44px, 14vw, 100px);
+  width: clamp(44px, calc(var(--k, 0.17) * 100cqw), 126px);
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1;
+}
+
+.const:not(.is-lit) .star {
+  opacity: 0;
+}
+
+.const.is-lit .star {
+  animation: star-in 0.75s cubic-bezier(0.2, 0.9, 0.3, 1.25) backwards;
+  animation-delay: calc(var(--i) * 0.2s + 0.1s);
+}
+
+@keyframes star-in {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.15) rotate(-40deg); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0); }
+}
+
+.star-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border: 3px solid var(--glow, var(--violet));
+  border-radius: 50%;
+  background: var(--paper-panel);
+  box-shadow: 0 6px 14px -8px rgba(0, 0, 0, 0.45);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.star-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Once opened, a star's ring turns neutral, like a visited link. */
+.star.is-read .star-face {
+  border-color: var(--ink-muted);
+}
+
+.star--missing .star-face {
+  background: var(--theme-lilac);
+}
+
+.star--missing img {
+  display: none;
+}
+
+.star-num {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border: 2px solid var(--glow, var(--violet));
+  border-radius: 11px;
+  background: var(--paper-panel);
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media (hover: hover) {
+  .star:not(.star--ghost):hover {
+    transform: translate(-50%, -50%) scale(1.7);
+    z-index: 5;
+  }
+
+  .star:not(.star--ghost):hover .star-face {
+    box-shadow: 0 18px 30px -12px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.star:focus-visible {
+  outline: 3px solid var(--violet-soft);
+  outline-offset: 5px;
+  transform: translate(-50%, -50%) scale(1.25);
+  z-index: 5;
+}
+
+/* "Ghost" stars: the how-to placeholder shown only while previewing locally. */
+.star--ghost {
+  cursor: default;
+}
+
+.star--ghost .star-face {
+  border: 2px dashed var(--ink-muted);
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ----- Footer call-to-action and local how-to note ----- */
+.sky-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-top: 22px;
+  text-align: center;
+}
+
+.sky-foot-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+.sky-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 18px;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  background: var(--paper-panel);
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: border-color 0.15s ease;
+}
+
+.sky-cta:hover {
+  border-color: var(--violet-soft);
+}
+
+/* "See all N reviews" on the homepage preview: the main action, so it is filled like the wish button. */
+.sky-cta--primary,
+.sky-cta--primary:hover {
+  color: var(--on-sun, #2B1C05);
+  border-color: transparent;
+  background: linear-gradient(120deg, var(--sun-soft), var(--sun));
+  box-shadow: 0 10px 24px -10px rgba(216, 148, 34, 0.7);
+  transition: transform 0.15s ease;
+}
+
+.sky-cta--primary:hover {
+  transform: translateY(-2px);
+}
+
+/* ----- The standalone page (reviews.html) ----- */
+.reviews-hero {
+  padding-bottom: 28px;
+}
+
+.reviews-hero p.lead {
+  margin-bottom: 0;
+}
+
+.reviews-section--page {
+  padding-top: 0;
+}
+
+.reviews-section--page .review-sky {
+  min-height: 340px;
+}
+
+.reviews-tally {
+  display: inline-flex;
+  align-items: center;
+  margin: 18px 0 0;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--paper-panel);
+  color: var(--ink);
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.reviews-tally[hidden] {
+  display: none;
+}
+
+.sky-noscript {
+  margin: 0;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.sky-howto .sky-cta {
+  margin-top: 14px;
+}
+
+.sky-howto {
+  max-width: 640px;
+  margin: 20px auto 0;
+  padding: 16px 20px;
+  border: 1px dashed var(--ink-muted);
+  border-radius: 16px;
+  background: var(--paper-panel);
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.sky-howto p {
+  margin: 0 0 8px;
+}
+
+.sky-howto p:last-child {
+  margin-bottom: 0;
+}
+
+.sky-howto-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.sky-howto code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--theme-lilac);
+  color: var(--ink);
+  font-size: 0.86em;
+  overflow-wrap: anywhere;
+}
+
+/* "Make a wish" -- the streak that flies to the chosen review. */
+.wish-meteor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  width: 120px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--violet));
+  transform-origin: 100% 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- The telescope: full-screen viewer for one screenshot ---------- */
+html.scope-open {
+  overflow: hidden;
+}
+
+.scope {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  color: var(--ink);
+  background: var(--paper-panel);
+}
+
+/* The sheet covers the whole screen, so the backdrop only needs a fallback. */
+.scope::backdrop {
+  background: var(--paper-panel, #FFFFFF);
+}
+
+.scope[open] {
+  display: flex;
+  flex-direction: column;
+  animation: scope-open 0.35s ease;
+}
+
+@keyframes scope-open {
+  from { opacity: 0; transform: scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+
+.scope-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px clamp(12px, 3vw, 28px) 6px;
+}
+
+.scope-map {
+  flex: 0 0 auto;
+  width: clamp(86px, 12vw, 128px);
+}
+
+.map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--aspect, 1.4);
+}
+
+.map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.map svg path {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-opacity: 0.7;
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 2px solid var(--ink-muted);
+  border-radius: 50%;
+  background: var(--paper-panel);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s ease, box-shadow 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.map-dot::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+}
+
+.map-dot.is-read {
+  background: var(--violet-soft);
+}
+
+.map-dot.is-active {
+  width: 18px;
+  height: 18px;
+  border-color: var(--violet);
+  background: var(--violet);
+  box-shadow: 0 0 0 4px var(--theme-lilac);
+}
+
+.map-dot:focus-visible,
+.scope-close:focus-visible,
+.scope-nav:focus-visible {
+  outline: 3px solid var(--violet-soft);
+  outline-offset: 3px;
+}
+
+.scope-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.scope-kicker {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.scope-book {
+  margin: 2px 0 0;
+  font-size: 0.84rem;
+  color: var(--violet);
+}
+
+.scope-book[hidden],
+.scope-error[hidden],
+.scope-scroll[hidden] {
+  display: none;
+}
+
+.scope-close {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  padding: 0 0 3px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: var(--paper-panel);
+  color: var(--ink);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.scope-close:hover {
+  border-color: var(--violet-soft);
+}
+
+.scope-stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 6px clamp(10px, 3vw, 28px);
+  touch-action: pan-y;
+}
+
+.scope-scroll {
+  max-width: 100%;
+  max-height: calc(100vh - 210px);
+  max-height: calc(100dvh - 210px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 14px;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 40px -22px rgba(0, 0, 0, 0.45);
+}
+
+.scope-scroll:focus-visible {
+  outline: 3px solid var(--violet-soft);
+  outline-offset: 4px;
+}
+
+.scope-img {
+  display: block;
+  max-width: none;
+  height: auto;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.scope-img.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.scope-error {
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.scope-foot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+}
+
+.scope-meta {
+  text-align: center;
+}
+
+.scope-count {
+  min-width: 8.5rem;
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.scope-hint {
+  display: none;
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.scope-nav {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  padding: 0 0 4px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: var(--paper-panel);
+  color: var(--ink);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.scope-nav:hover {
+  border-color: var(--violet-soft);
+}
+
+/* Roomy screens: big arrows at the sides, a hint under the counter. */
+@media (min-width: 900px) {
+  .scope-foot {
+    position: static;
+  }
+
+  .scope-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 56px;
+    height: 56px;
+    font-size: 2rem;
+    transform: translateY(-50%);
+  }
+
+  .scope-prev {
+    left: clamp(14px, 2.5vw, 40px);
+  }
+
+  .scope-next {
+    right: clamp(14px, 2.5vw, 40px);
+  }
+
+  .scope-hint {
+    display: block;
+  }
+}
+
+@media (max-width: 560px) {
+  .const {
+    padding: 12px 10px 8px;
+  }
+
+  .sky-bar {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scope[open] {
+    animation: none;
+  }
+
+  .const.is-lit .star {
+    animation: none;
+  }
+
+  .edge-glow {
+    stroke-dashoffset: 0;
+  }
+
+  .const.is-lit .edge-glow {
+    animation: none;
+  }
+
+  .star,
+  .scope-img {
+    transition: none;
+  }
+}

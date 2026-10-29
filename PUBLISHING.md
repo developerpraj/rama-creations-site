@@ -61,18 +61,24 @@ The deployment workflow does not run this generator. Run it locally after
 changing book source data or images, then include its updated catalog and
 cover assets in the site folder before publishing.
 
+The same command also rebuilds the homepage "Review Sky": it turns the
+screenshots in `content/reviews/` into `data/reviews.json` and
+`assets/reviews/` (see README.md, "Adding review screenshots"). Commit those
+generated files too.
+
 ## Phase 3: Preview locally
 
 ```bash
-cd rama-creations-site
-python -m http.server 8000
+python rama-creations-site/tools/serve.py
 ```
 
 Then open `http://localhost:8000/books.html` (or `/index.html`) in a
 browser. What it does: serves the folder over `http://` so
 `fetch("data/books.json")` works -- opening `books.html` directly via
 `file://` will NOT load the catalog, since browsers block `fetch()` of
-local files under `file://`. Stop the server with `Ctrl+C` when done.
+local files under `file://`. It is `python -m http.server` with caching
+turned off, so a normal refresh shows your latest changes. Stop the server
+with `Ctrl+C` when done.
 
 ## Phase 4: Commit and push to the pipeline repository
 

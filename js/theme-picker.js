@@ -1,8 +1,11 @@
 // "Pick your color" nav control -- lets a visitor override the current
-// page's flat background with any light pastel swatch, regardless of that
-// page's own default theme (--page-bg). Injected into the middle of
-// .nav-links via JS so every page gets it without duplicating markup.
-// Persisted in localStorage so the choice survives navigating between pages.
+// page's look: either a plain light pastel background (any swatch, regardless
+// of that page's own default theme, --page-bg) or one of the full color
+// themes from js/themes.js (background + cards + accent, 60-30-10).
+// Injected into the middle of .nav-links via JS so every page gets it
+// without duplicating markup. Persisted in localStorage so the choice
+// survives navigating between pages; a plain color and a theme never apply
+// at the same time.
 const COLOR_SWATCHES = [
   { name: "White", value: "#FFFFFF" },
   { name: "Blush Pink", value: "#FDE7EC" },
@@ -22,12 +25,46 @@ const STORAGE_KEY = "rama-page-color-override";
 
 function applyColorOverride(hex) {
   if (hex) {
+    if (window.RamaThemes) window.RamaThemes.clear(); // a plain color replaces any theme
     document.body.style.setProperty("--page-bg", hex);
     localStorage.setItem(STORAGE_KEY, hex);
   } else {
     document.body.style.removeProperty("--page-bg");
     localStorage.removeItem(STORAGE_KEY);
   }
+}
+
+function buildThemeButton(theme) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "cp-theme";
+  button.dataset.theme = theme.id;
+  button.setAttribute("aria-pressed", "false");
+  button.title = theme.palette.map(([name, hex]) => `${name} ${hex}`).join(" \u00B7 ");
+
+  // The preview is the 60-30-10 rule itself: page, cards, accent.
+  const bar = document.createElement("span");
+  bar.className = "cp-bar";
+  bar.setAttribute("aria-hidden", "true");
+  [[theme.bg, 60], [theme.panel, 30], [theme.accent, 10]].forEach(([color, share]) => {
+    const segment = document.createElement("i");
+    segment.style.background = color;
+    segment.style.flex = `${share} 0 0`;
+    bar.appendChild(segment);
+  });
+
+  const label = document.createElement("span");
+  label.className = "cp-label";
+  const name = document.createElement("span");
+  name.className = "cp-name";
+  name.textContent = theme.name;
+  const colors = document.createElement("span");
+  colors.className = "cp-colors";
+  colors.textContent = theme.palette.map(([colorName]) => colorName).join(" \u00B7 ");
+  label.append(name, colors);
+
+  button.append(bar, label);
+  return button;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -40,13 +77,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const trigger = document.createElement("button");
   trigger.type = "button";
   trigger.className = "color-picker-trigger";
-  trigger.setAttribute("aria-label", "Pick a page color");
-  trigger.title = "Pick a page color";
+  trigger.setAttribute("aria-label", "Pick a page color or theme");
+  trigger.setAttribute("aria-expanded", "false");
+  trigger.title = "Pick a page color or theme";
   trigger.textContent = "\u{1F3A8}";
 
   const panel = document.createElement("div");
   panel.className = "color-picker-panel";
   panel.setAttribute("role", "menu");
+
+  const swatchTitle = document.createElement("p");
+  swatchTitle.className = "cp-title";
+  swatchTitle.textContent = "Page color";
+  const swatches = document.createElement("div");
+  swatches.className = "cp-swatches";
 
   COLOR_SWATCHES.forEach((swatch) => {
     const swatchBtn = document.createElement("button");
@@ -57,9 +101,9 @@ document.addEventListener("DOMContentLoaded", () => {
     swatchBtn.setAttribute("aria-label", `Use ${swatch.name} background`);
     swatchBtn.addEventListener("click", () => {
       applyColorOverride(swatch.value);
-      panel.classList.remove("open");
+      closePanel();
     });
-    panel.appendChild(swatchBtn);
+    swatches.appendChild(swatchBtn);
   });
 
   const resetBtn = document.createElement("button");
@@ -70,9 +114,36 @@ document.addEventListener("DOMContentLoaded", () => {
   resetBtn.setAttribute("aria-label", "Reset to this page's default color");
   resetBtn.addEventListener("click", () => {
     applyColorOverride(null);
-    panel.classList.remove("open");
+    if (window.RamaThemes) window.RamaThemes.clear();
+    closePanel();
   });
-  panel.appendChild(resetBtn);
+  swatches.appendChild(resetBtn);
+
+  panel.append(swatchTitle, swatches);
+
+  if (window.RamaThemes) {
+    const themeTitle = document.createElement("p");
+    themeTitle.className = "cp-title cp-title--themes";
+    themeTitle.textContent = "Themes";
+
+    const list = document.createElement("div");
+    list.className = "cp-themes";
+    window.RamaThemes.THEMES.forEach((theme) => {
+      const button = buildThemeButton(theme);
+      button.addEventListener("click", () => window.RamaThemes.apply(theme.id));
+      list.appendChild(button);
+    });
+    panel.append(themeTitle, list);
+
+    const syncActive = () => {
+      const active = window.RamaThemes.current();
+      list.querySelectorAll(".cp-theme").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.theme === active));
+      });
+    };
+    window.addEventListener("rama-themechange", syncActive);
+    syncActive();
+  }
 
   wrapper.appendChild(trigger);
   wrapper.appendChild(panel);
@@ -81,14 +152,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const middleIndex = Math.floor(navLinks.children.length / 2);
   navLinks.insertBefore(wrapper, navLinks.children[middleIndex] || null);
 
+  function closePanel() {
+    panel.classList.remove("open");
+    trigger.setAttribute("aria-expanded", "false");
+  }
+
   trigger.addEventListener("click", (event) => {
     event.stopPropagation();
-    panel.classList.toggle("open");
+    const open = panel.classList.toggle("open");
+    trigger.setAttribute("aria-expanded", String(open));
   });
   document.addEventListener("click", (event) => {
-    if (!wrapper.contains(event.target)) panel.classList.remove("open");
+    if (!event.composedPath().includes(wrapper)) closePanel();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && panel.classList.contains("open")) {
+      closePanel();
+      trigger.focus();
+    }
   });
 
   const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved) document.body.style.setProperty("--page-bg", saved);
+  if (saved && !(window.RamaThemes && window.RamaThemes.current())) {
+    document.body.style.setProperty("--page-bg", saved);
+  }
 });

@@ -12,6 +12,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/reviews.css" />
+  <script src="js/themes.js"></script>
 
   <link rel="canonical" href="https://theramacreations.com/" />
   <meta property="og:type" content="website" />
@@ -60,6 +62,7 @@
           <a href="books.html">Books</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
+          <a href="reviews.html" data-reviews-link hidden>Reviews</a>
         </div>
       </nav>
     </div>
@@ -178,6 +181,20 @@
         </div>
       </div>
     </section>
+
+    <!-- Hidden until js/reviews.js finds screenshots in data/reviews.json. Shows the first
+         data-reviews-limit of them, then a link to reviews.html (every review). Add reviews by
+         dropping images into content/reviews/ and running tools/generate_catalog.py (see README.md). -->
+    <section id="reviews" class="reviews-section" data-reviews-limit="12" aria-labelledby="reviews-title" hidden>
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Reader Love</span>
+          <h2 id="reviews-title">Every star is a <span class="accent">real review</span></h2>
+          <p>Kind words from our readers, mapped into constellations of their own.</p>
+        </div>
+        <div class="review-sky" id="review-sky"></div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -187,6 +204,7 @@
         <a href="books.html">Books</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+        <a href="reviews.html" data-reviews-link hidden>Reviews</a>
       </div>
     </div>
   </footer>
@@ -196,6 +214,7 @@
   <script src="js/confetti-extra.js"></script>
   <script src="js/emoji-launcher.js"></script>
   <script src="js/why-tiles.js"></script>
+  <script src="js/reviews.js"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
