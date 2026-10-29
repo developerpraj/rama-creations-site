@@ -17,7 +17,8 @@ rama-creations-site/
   js/main.js            Mobile nav toggle only -- no framework, no build tooling
   js/books.js           Fetches data/books.json and renders the whole catalog
   js/contact.js         Field verification + Google Apps Script submission (see below)
-  assets/               Copies of the brand logo/icon SVGs from ../assets/, plus assets/covers/
+  assets/               Brand logos, supplied PNG home-screen/share icons, and book covers
+  site.webmanifest      Home-screen app name and installable icon sizes
 ```
 
 ## Preview locally

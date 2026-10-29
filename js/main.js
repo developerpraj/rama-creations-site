@@ -24,4 +24,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (isStandalone && !prefersReducedMotion) {
+    document.querySelectorAll(".brand").forEach((brand) => {
+      const logo = brand.querySelector("img");
+      if (!logo) return;
+      logo.addEventListener(
+        "animationend",
+        () => brand.classList.remove("brand--launch-spin"),
+        { once: true },
+      );
+      requestAnimationFrame(() => brand.classList.add("brand--launch-spin"));
+    });
+  }
+
 });

@@ -156,6 +156,21 @@ img {
   transform: rotate(360deg);
 }
 
+@keyframes brand-launch-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.brand--launch-spin img {
+  animation: brand-launch-spin 0.7s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand--launch-spin img {
+    animation: none;
+  }
+}
+
 .brand span.accent {
   background: linear-gradient(120deg, var(--amber), var(--sun));
   -webkit-background-clip: text;
